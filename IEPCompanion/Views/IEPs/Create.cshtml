@@ -8,15 +8,10 @@
 
 @using (Html.BeginForm())
 {
-  @Html.HiddenFor(model => model.IEPId)
+  
+@Html.HiddenFor(model => model.IEPId)
 
-  @Html.Label("Select a student:")
-  @Html.DropDownListFor(model => model.IEPId, new SelectList(ViewBag.Students, "IEPId", "FullName"))
-
-  <input type="submit" value="Create" />
-}
-
-@Html.DropDownListFor(model => model.PersonId, new SelectList(Model.IEP, "FirstName", "LastName"))
+@Html.Label("Select a student:")
 
   <input type="submit" value="Create" />
   
