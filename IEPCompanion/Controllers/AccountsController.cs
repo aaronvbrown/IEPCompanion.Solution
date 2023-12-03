@@ -11,12 +11,14 @@ public class AccountsController:Controller
   private readonly IEPCompanionContext _db;
   private readonly UserManager<ApplicationUser> _userManager;
   private readonly SignInManager<ApplicationUser> _signInManager;
+  private readonly RoleManager<IdentityRole> _roleManager;
 
-  public AccountsController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEPCompanionContext db)
+  public AccountsController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEPCompanionContext db, RoleManager<IdentityRole> roleManager)
   {
     _userManager = userManager;
     _signInManager = signInManager;
     _db=db;
+    _roleManager = roleManager;
   }
 
   public ActionResult Login()
@@ -46,11 +48,15 @@ public async Task<IActionResult> Register(RegisterViewModel model)
     {
         ApplicationUser user = new ApplicationUser { UserName = model.Email };
         IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+        var role = await _roleManager.FindByNameAsync(model.Role);
         if (result.Succeeded)
         {
+          if (role == null)
+            {
+                await _roleManager.CreateAsync(new IdentityRole(model.Role));
+            }
             // Assign the role to the user
             await _userManager.AddToRoleAsync(user, model.Role);
-
             return RedirectToAction("Index", "Home");
         }
         else
@@ -62,6 +68,7 @@ public async Task<IActionResult> Register(RegisterViewModel model)
             return View(model);
         }
     }
+    
 }
   
   [HttpPost]

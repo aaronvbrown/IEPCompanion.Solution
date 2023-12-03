@@ -4,6 +4,7 @@ using IEPCompanion.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace IEPCompanion.Controllers
@@ -27,5 +28,23 @@ namespace IEPCompanion.Controllers
       };
       return View(model);
     }
+    [Authorize(Policy = "RequireAdministratorRole")]
+    public ActionResult AdminAuthTest()
+    {
+      return View();
+    }
+    [Authorize(Policy = "RequireTeacherRole")]
+    public ActionResult TeacherAuthTest()
+    {
+      return View();
+    }
+
+    [Authorize(Policy = "RequireParentRole")]
+    public ActionResult ParentAuthTest()
+    {
+      return View();
+    }
   }
 }
+
+// [Authorize(Policy = "RequireAdministratorRole")]

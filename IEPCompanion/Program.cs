@@ -5,56 +5,39 @@ using IEPCompanion.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Identity.UI; 
+using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.Extensions.Logging;
 
 
-// public class Program
-// {
-//     public static void Main(string[] args)
-//     {
-//         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-//         var configuration = builder.Configuration;
-//         var services = builder.Services;
-
-//         var connectionString = GetConnectionString(builder, "DefaultConnection");
-
-//         services.AddDbContext<IEPCompanionContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-
-
-//         //Adds identity roles to the database.
-//         builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//                 .AddRoles<IdentityRole>()
-//                 .AddEntityFrameworkStores<IEPCompanionContext>();
-
-//         connectionString = GetConnectionString(builder, "IEPCompanion");
-
-//         builder.Services.AddControllersWithViews();
-//     }
-
-//     public static string GetConnectionString(WebApplicationBuilder builder, string IEPCompanion)
-//     {
-//         return builder.Configuration.GetConnectionString(IEPCompanion);
-//     }
-//   }
-
-//   // be sure to change the namespace to match your project
-  namespace IEPCompanion
+// be sure to change the namespace to match your project
+namespace IEPCompanion
   {
     class Program
     {
-      static async Task Main(string[] args)
+      static void Main(string[] args)
       {
+        
         var builder = WebApplication.CreateBuilder(args);
 
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
         builder.Services.AddDbContext<IEPCompanionContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-        // Adds identity roles to the database.
+      // Adds identity roles to the database.
         builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
           .AddRoles<IdentityRole>()
           .AddEntityFrameworkStores<IEPCompanionContext>();
+        
 
+        builder.Services.AddAuthorization(options =>
+        {
+          options.AddPolicy("RequireAdministratorRole",
+                          policy => policy.RequireRole("admin"));
+          options.AddPolicy("RequireTeacherRole",
+                          policy => policy.RequireRole("teacher"));
+          options.AddPolicy("RequireParentRole",
+                          policy => policy.RequireRole("parent"));
+        });
         builder.Services.AddControllersWithViews();
 
         // be sure to update the line below for your project
@@ -66,10 +49,6 @@ using Microsoft.AspNetCore.Identity.UI;
             )
         );
 
-        // Line below adds Identity
-        builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-          .AddEntityFrameworkStores<IEPCompanionContext>()
-          .AddDefaultTokenProviders();
 
         // This is where we can determine Password requirements for users.
         builder.Services.Configure<IdentityOptions>(options =>
@@ -83,6 +62,7 @@ using Microsoft.AspNetCore.Identity.UI;
         });
 
         var app = builder.Build();
+
 
         app.UseDeveloperExceptionPage();
         app.UseStaticFiles();
@@ -99,20 +79,7 @@ using Microsoft.AspNetCore.Identity.UI;
         );
 
         // Regarding scope of roles, this is where we can add roles to the database.
-        using (var scope = app.Services.CreateScope())
-        {
-          var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-          var roles = new[] { "Admin", "Teacher", "Student" };
-
-          foreach (var role in roles)
-          {
-            if (!await roleManager.RoleExistsAsync(role))
-            {
-              await roleManager.CreateAsync(new IdentityRole(role));
-            }
-          }
-        }
+      
 
         app.Run();
       }

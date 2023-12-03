@@ -9,6 +9,9 @@
 <h1>IEP Home</h1>
 
 <div>
+@Html.ActionLink("Click if you're a teacher", "TeacherAuthTest", "Home");
+@Html.ActionLink("Click if you're a parent", "ParentAuthTest", "Home");
+@Html.ActionLink("Click if you're a admin", "AdminAuthTest", "Home");
   @if(!User.Identity.IsAuthenticated)
   {
     @Html.ActionLink("Login", "Login", "Accounts")
@@ -24,9 +27,9 @@ else {
   else
   {
     <ul>
-      @foreach (IEP iep in Model["ieps"])
+      @foreach (IEP IepInstance in Model["IEP"])
       {
-        <li>@Html.ActionLink($"{iep.IEPId}", "Details", "Home" , new { id = iep.IEPId })</li>
+        <li>@Html.ActionLink($"{IepInstance.IEPId}", "Details", "Home" , new { id = IepInstance.IEPId })</li>
       }
     </ul>
     }
