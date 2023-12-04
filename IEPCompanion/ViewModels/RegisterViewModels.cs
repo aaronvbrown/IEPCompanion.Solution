@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using IEPCompanion.Models;
+
 namespace IEPCompanion.ViewModels;
 
 public class RegisterViewModel
@@ -21,8 +23,17 @@ public class RegisterViewModel
 
   [Required]
   [Display(Name ="Role")]
-  public string Role { get; set; }
+  public string Role{ get; set; }
 
-  
+  [Required]
+  [Display(Name ="First Name")]
+  public string FirstName{ get; set; }
+
+  [Required]
+  [Display(Name ="Last Name")]
+  public string LastName{ get; set; }
+
+   public virtual Person Person { get; set; }
+
 
 }

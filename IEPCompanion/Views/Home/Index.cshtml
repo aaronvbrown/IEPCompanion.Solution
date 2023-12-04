@@ -9,12 +9,18 @@
 <h1>IEP Home</h1>
 
 <div>
+@Html.ActionLink("Add IEP", "Create", "IEPs");
+@Html.ActionLink("Add Student", "Create", "Student");
+
+<div>
 @Html.ActionLink("Click if you're a teacher", "TeacherAuthTest", "Home");
 @Html.ActionLink("Click if you're a parent", "ParentAuthTest", "Home");
 @Html.ActionLink("Click if you're a admin", "AdminAuthTest", "Home");
+
   @if(!User.Identity.IsAuthenticated)
   {
     @Html.ActionLink("Login", "Login", "Accounts")
+    <br />
     @Html.ActionLink("Register", "Register", "Accounts")
   }
 else {
@@ -38,9 +44,16 @@ else {
   @if (Model["people"].Count == 0)
   {
     <p>No People added</p>
+    <p>Click @Html.ActionLink("here", "Create", "Peoples") to add a new Person</p>
   }
   else
   {
+    
+      @foreach (Person person in Model["people"])
+      {
+        <li>@Html.ActionLink($"ID: {person.PersonId} {person.LastName}, {person.FirstName}", "Details", "Peoples" , new { id = person.PersonId })</li>
+      }
+  }
     <h4>Teachers</h4>
     <ul>
       @foreach (Person person in Model["people"])

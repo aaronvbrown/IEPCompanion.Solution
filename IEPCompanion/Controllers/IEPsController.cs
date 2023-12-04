@@ -41,6 +41,12 @@ public class IEPsController : Controller
     return View();
   }
 
+  public ActionResult Details(int id)
+  {
+    IEP thisIEP = _db.IEPs.FirstOrDefault(iep => iep.IEPId == id);
+    return View(thisIEP);
+  }
+
   //READ 
 
   //UPDATE

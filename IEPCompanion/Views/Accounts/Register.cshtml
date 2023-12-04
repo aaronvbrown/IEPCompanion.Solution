@@ -4,6 +4,7 @@
 @using IEPCompanion.ViewModels
 @model RegisterViewModel
 
+
 <h2>Register</h2>
 
 @if(!ViewData.ModelState.IsValid) 
@@ -21,6 +22,12 @@
 
   @Html.LabelFor(user=> user.ConfirmPassword)
   @Html.EditorFor(user=> user.ConfirmPassword)
+  
+  @Html.LabelFor(model=> model.FirstName)
+  @Html.EditorFor(model=> model.FirstName)
+
+  @Html.LabelFor(model=> model.LastName)
+  @Html.EditorFor(model=> model.LastName)
 
   <label for="Role">Select your role:</label>
   <select id="Role" name="Role">

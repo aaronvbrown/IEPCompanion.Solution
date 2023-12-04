@@ -2,3 +2,21 @@
   Layout = "_Layout";
 }
 
+<h1>IEP's</h1>
+
+<div>
+@Html.ActionLink("Add IEP", "Create", "IEPs");
+
+
+<h4>IEP Listing</h4>
+@* @if (Model["ieps"].Length == 0)
+{
+  <p>No ieps have been added yet!</p>
+} *@
+@* <ul>
+  @foreach (IEP iep in Model["ieps"])
+  {
+    <li>@Html.ActionLink(@iep.Description, "Details", "Treats", new {id = @treat.TreatId})</li>
+  }
+</ul> *@
+

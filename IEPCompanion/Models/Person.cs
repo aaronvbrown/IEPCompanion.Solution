@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace IEPCompanion.Models
 {
@@ -11,6 +13,10 @@ namespace IEPCompanion.Models
     public string Email { get; set; }
     public string Role { get; set; }
     public List<IEPPerson> JoinEntities { get; set; }
+
+    public string UserId { get; set; }
+    
+    public ApplicationUser User { get; set; }
   }
 }
 

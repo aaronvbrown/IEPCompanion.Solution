@@ -28,6 +28,7 @@ namespace IEPCompanion.Controllers
       };
       return View(model);
     }
+    
     [Authorize(Policy = "RequireAdministratorRole")]
     public ActionResult AdminAuthTest()
     {

@@ -24,7 +24,7 @@ namespace IEPCompanion
         builder.Services.AddDbContext<IEPCompanionContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
       // Adds identity roles to the database.
-        builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+        builder.Services.AddDefaultIdentity<ApplicationUser>()
           .AddRoles<IdentityRole>()
           .AddEntityFrameworkStores<IEPCompanionContext>();
         

@@ -1,0 +1,28 @@
+@using IEPCompanion.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+
+
+
+
+<h4>People</h4>
+@if(Model["persons"].Length == 0)
+{
+  <p>none yet</p>
+}
+<ul>
+  @foreach (Person person in Model["persons"])
+  {
+   // <li>@Html.ActionLink(@person.PersonId, "Details", new { id = @person.PersonId })</li>
+  }
+
+
+  @foreach (Person person in Model["people"])
+  {
+    <li>@Html.ActionLink($"ID: {person.PersonId} {person.LastName}, {person.FirstName}", "Details", "Peoples" , new { id = person.PersonId })</li>
+  }
+
+</ul>

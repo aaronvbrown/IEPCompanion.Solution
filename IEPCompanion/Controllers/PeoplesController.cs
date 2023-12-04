@@ -21,6 +21,18 @@ public class PeoplesController : Controller
     return View(model);
   }
 
-  
+  public ActionResult Create()
+  {
+    return View();
+  } 
+
+
+
+public ActionResult Details(int id)
+{
+    Person thisPerson = _db.Persons.FirstOrDefault(person => person.PersonId == id);
+
+    return View(thisPerson);
+}
 
 }

@@ -3,6 +3,7 @@ using System;
 using IEPCompanion.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IEPCompanion.Migrations
 {
     [DbContext(typeof(IEPCompanionContext))]
-    partial class IEPCompanionContextModelSnapshot : ModelSnapshot
+    [Migration("20231203235750_JoinUserToPerson")]
+    partial class JoinUserToPerson
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,11 +153,9 @@ namespace IEPCompanion.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("PersonId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Persons");
                 });
@@ -318,15 +318,6 @@ namespace IEPCompanion.Migrations
                     b.Navigation("IEP");
 
                     b.Navigation("Person");
-                });
-
-            modelBuilder.Entity("IEPCompanion.Models.Person", b =>
-                {
-                    b.HasOne("IEPCompanion.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

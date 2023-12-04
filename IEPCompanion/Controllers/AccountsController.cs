@@ -51,6 +51,12 @@ public async Task<IActionResult> Register(RegisterViewModel model)
         var role = await _roleManager.FindByNameAsync(model.Role);
         if (result.Succeeded)
         {
+           var person = new Person { FirstName = model.FirstName, LastName = model.LastName };
+            _db.Persons.Add(person);
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Home");
+
           if (role == null)
             {
                 await _roleManager.CreateAsync(new IdentityRole(model.Role));
