@@ -33,7 +33,7 @@ public class RegisterViewModel
   [Display(Name ="Last Name")]
   public string LastName{ get; set; }
 
-   public virtual Person Person { get; set; }
+   //public virtual Person Person { get; set; }
 
 
 }

@@ -4,6 +4,7 @@ using IEPCompanion.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IEPCompanion.Controllers;
 
@@ -15,6 +16,7 @@ public class PeoplesController : Controller
     _db = db;
   }
 
+  [Authorize(Roles = "admin")]
   public ActionResult Index()
   {
     List<Person> model = _db.Persons.ToList();
@@ -26,6 +28,13 @@ public class PeoplesController : Controller
     return View();
   } 
 
+  [HttpPost]
+  public ActionResult Create(Person toAdd)
+  {
+    _db.Persons.Add(toAdd);
+    _db.SaveChanges();
+    return RedirectToAction("Index");
+  }
 
 
 public ActionResult Details(int id)

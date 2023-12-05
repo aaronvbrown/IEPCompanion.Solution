@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 
 // be sure to change the namespace to match your project
@@ -39,6 +40,18 @@ namespace IEPCompanion
                           policy => policy.RequireRole("parent"));
         });
         builder.Services.AddControllersWithViews();
+
+        builder.Services.ConfigureApplicationCookie(options =>
+      {
+        options.Events = new CookieAuthenticationEvents
+        {
+          OnRedirectToAccessDenied = context =>
+            {
+              context.Response.Redirect($"/?accessDenied=true");
+              return Task.CompletedTask;
+            }
+        };
+      });
 
         // be sure to update the line below for your project
         builder.Services.AddDbContext<IEPCompanionContext>(

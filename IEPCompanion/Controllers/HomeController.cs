@@ -17,7 +17,7 @@ namespace IEPCompanion.Controllers
     {
       _db = db;
     }
-
+    
     [HttpGet("/")]
     public ActionResult Index()
     {
@@ -29,13 +29,8 @@ namespace IEPCompanion.Controllers
       return View(model);
     }
     
-    [Authorize(Policy = "RequireAdministratorRole")]
-    public ActionResult AdminAuthTest()
-    {
-      return View();
-    }
-    [Authorize(Policy = "RequireTeacherRole")]
-    public ActionResult TeacherAuthTest()
+    [Authorize(Roles = "admin,teacher")]
+    public ActionResult AdminTeacherAuthTest()
     {
       return View();
     }

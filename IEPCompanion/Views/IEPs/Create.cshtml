@@ -9,9 +9,10 @@
 @using (Html.BeginForm())
 {
   
-@Html.HiddenFor(model => model.IEPId)
+  @Html.HiddenFor(model => model.IEPId)
 
-@Html.Label("Select a student:")
+  @Html.DropDownList("StudentId")
+  @Html.DropDownList("TeacherId")
 
   <input type="submit" value="Create" />
   

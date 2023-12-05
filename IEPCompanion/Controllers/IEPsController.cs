@@ -38,6 +38,9 @@ public class IEPsController : Controller
   //CREATE
   public ActionResult Create()
   {
+
+    ViewBag.StudentId = new SelectList(_db.Persons.Where(person=>person.Role=="Student").ToList(), "PersonId", "FirstName");
+    ViewBag.TeacherId = new SelectList(_db.Persons.Where(person=>person.Role=="Teacher").ToList(), "PersonId", "FirstName");
     return View();
   }
 

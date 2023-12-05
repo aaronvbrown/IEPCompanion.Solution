@@ -13,9 +13,8 @@
 @Html.ActionLink("Add Student", "Create", "Student");
 
 <div>
-@Html.ActionLink("Click if you're a teacher", "TeacherAuthTest", "Home");
 @Html.ActionLink("Click if you're a parent", "ParentAuthTest", "Home");
-@Html.ActionLink("Click if you're a admin", "AdminAuthTest", "Home");
+@Html.ActionLink("Click if you're a admin or a teacher", "AdminTeacherAuthTest", "Home");
 
   @if(!User.Identity.IsAuthenticated)
   {
@@ -33,7 +32,7 @@ else {
   else
   {
     <ul>
-      @foreach (IEP IepInstance in Model["IEP"])
+      @foreach (IEP IepInstance in Model["ieps"])
       {
         <li>@Html.ActionLink($"{IepInstance.IEPId}", "Details", "Home" , new { id = IepInstance.IEPId })</li>
       }
@@ -98,5 +97,5 @@ else {
       }
     </ul>
     }
-  }
+  
 

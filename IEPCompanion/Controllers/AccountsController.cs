@@ -51,19 +51,13 @@ public async Task<IActionResult> Register(RegisterViewModel model)
         var role = await _roleManager.FindByNameAsync(model.Role);
         if (result.Succeeded)
         {
-           var person = new Person { FirstName = model.FirstName, LastName = model.LastName };
-            _db.Persons.Add(person);
-            await _db.SaveChangesAsync();
-
-            return RedirectToAction("Index", "Home");
-
           if (role == null)
             {
-                await _roleManager.CreateAsync(new IdentityRole(model.Role));
+              await _roleManager.CreateAsync(new IdentityRole(model.Role));
             }
             // Assign the role to the user
             await _userManager.AddToRoleAsync(user, model.Role);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login");
         }
         else
         {
@@ -103,7 +97,7 @@ public async Task<IActionResult> Register(RegisterViewModel model)
   public async Task<ActionResult> LogOff()
   {
     await _signInManager.SignOutAsync();
-    return RedirectToAction("Index");
+    return RedirectToAction("Index", "Home");
   }
 
 
