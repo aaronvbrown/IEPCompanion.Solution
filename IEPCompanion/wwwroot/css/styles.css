@@ -1,75 +1,12 @@
-/* relevant portion */
-button {
-	--border-radius: 24px;
-	--border-width: 8px;
-
-	appearance: none;
-	position: relative;
-	padding: 1em 2em;
-	border: 0;
-	background-color: transparent;
-	font-family: "Montserrat", sans-serif;
-	font-size: 2em;
-	font-weight: 600;
-	color: #fff;
+.btn.btn-primary {
+	background-color: #000;
+	border-image: linear-gradient(to right, hotpink, skyblue);
+	border-image-slice: 1;
+	border-image-width: 5px;
+	border-image-outset: 0;
 }
 
-button::after {
-	--m-i: linear-gradient(#000, #000);
-	--m-o: content-box, padding-box;
 
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	padding: var(--border-width);
-	border-radius: var(--border-radius);
-	background-image: conic-gradient(
-		#488cfb,
-		#29dbbc,
-		#ddf505,
-		#ff9f0e,
-		#e440bb,
-		#655adc,
-		#488cfb
-	);
-
-	mask-image: var(--m-i), var(--m-i);
-	mask-origin: var(--m-o);
-	mask-clip: var(--m-o);
-	mask-composite: exclude;
-	-webkit-mask-composite: destination-out;
-
-	filter: hue-rotate(0);
-	animation: hue linear 500ms infinite;
-	animation-play-state: paused;
-}
-
-button:hover::after {
-	animation-play-state: running;
-}
-
-@keyframes hue {
-	to {
-		filter: hue-rotate(1turn);
-	}
-}
-
-/* to have things in good shape */
-*,
-*::before,
-*::after {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-/* 
-html,
-body {
-	height: 100%;
-} */
 
 body {
 	background-color: #161724;
@@ -77,9 +14,9 @@ body {
 	place-items: center;
 }
 
- .container {
+.container {
 	display: grid;
-	background: #000;
+	background: transparent;
 }
 
 .navbar {
@@ -92,11 +29,13 @@ body {
 	align-items: center;
 	background: #000;
 	z-index: 999;
+	padding: 0 20px;
 }
 
 .body-container {
 	display: grid;
-	background: #000;
+	background: transparent;
+	place-items: center;
 }
 
 ul.navbar-nav {
@@ -104,14 +43,13 @@ ul.navbar-nav {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	background: #000;
+	background: transparent;
 }
 
-a.navbar-brand {
+.nav-header {
 	font-size: 1.4em;
 	font-weight: 600;
 	color: #fff;
-	text-decoration: none;
 }
 
 a {
@@ -122,3 +60,4 @@ a {
 	padding-left: 10px;
 	padding-right: 10px
 }
+

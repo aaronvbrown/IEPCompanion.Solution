@@ -14,22 +14,27 @@
   <div class="navbar">
 
     <div class="container-sm-3">
-      <a class="navbar-brand" href="/">IEPCompanion</a>
+      <div class="nav-header"> 
+      IEPCompanion</a>
+    </div>
     </div>
     <ul class="navbar-nav">
-      <a class="container" href="/">Home</a>
+      <a class="container"></a>
+        <a class="btn btn-primary" href="/">Home</a>
+      </a>
         @if(!User.Identity.IsAuthenticated)
       {
         <a class="container">
-            @Html.ActionLink("Register", "Register", "Accounts")
+            @Html.ActionLink("Register", "Register", "Accounts", null, new { @class = "btn btn-primary" })
         </a>
         <a class="container">
-            @Html.ActionLink("Login", "Login", "Accounts")
+            @Html.ActionLink("Login", "Login", "Accounts", null, new { @class = "btn btn-primary" })
         </a>
       }
       @if(User.Identity.IsAuthenticated)
       {
         <a class="container">
+          
           @using (Html.BeginForm("LogOff", "Accounts"))
           {
             <input type="submit" class="btn btn-primary" value="Log out" />
