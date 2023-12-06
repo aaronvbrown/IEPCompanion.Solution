@@ -3,9 +3,36 @@
 }
 
 @using IEPCompanion.Models;
+@model IEPCompanion.Models.IEP;
 
- @foreach (var person in Model.People)
-      {
-        
-      }
+<h2>IEP Details</h2>
+<hr />
+
+
+<h4>Personnel</h4>
+<ul>
+  @foreach(IEPPerson join in Model.PersonJoins)
+  {
+    <li>@join.Person.Role: @join.Person.LastName, @join.Person.FirstName</li>
+  }
+</ul>
+
+<h4>Challenges</h4>
+<ul>
+  @foreach(IEPChallenge join in Model.ChallengeJoins)
+  {
+    <li>@join.Challenge.Description</li>
+  }
+</ul>
+
+<h4>Accommodations</h4>
+<ul>
+  @foreach(IEPAccommodation join in Model.AccommodationJoins)
+  {
+    <li>@join.Accommodation.Description</li>
+  }
+</ul>
+
+
+
 

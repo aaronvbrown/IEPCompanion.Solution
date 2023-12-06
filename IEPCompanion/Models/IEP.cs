@@ -7,10 +7,10 @@ public class IEP
 {
   public int IEPId { get; set; }
   public int PersonId { get; set; }
-  public int SchoolYear { get; set; }
-  public List<IEPPerson> JoinEntities { get; set; }
-  public string Disability { get; set; }
-  public string Goals { get; set; }
+  public List<IEPPerson> PersonJoins { get; set; }
+  public List<IEPChallenge> ChallengeJoins { get; set; }
+
+  public List<IEPAccommodation> AccommodationJoins { get; set; }
   public ApplicationUser User { get; set; }
 
 }

@@ -6,7 +6,6 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 
-
 namespace IEPCompanion.Controllers
 {
   public class HomeController : Controller
@@ -42,5 +41,3 @@ namespace IEPCompanion.Controllers
     }
   }
 }
-
-// [Authorize(Policy = "RequireAdministratorRole")]

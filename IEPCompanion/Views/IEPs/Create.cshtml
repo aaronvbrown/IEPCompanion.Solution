@@ -2,18 +2,31 @@
   Layout = "_Layout";
 }
 
-@model IEPCompanion.Models.IEP
+@using IEPCompanion.Models
 
 <h2>Create a new IEP</h2>
 
-@using (Html.BeginForm())
-{
-  
-  @Html.HiddenFor(model => model.IEPId)
+@using (Html.BeginForm()) {
+    <label>Student: </label> 
+    @Html.DropDownList("StudentId", (IEnumerable<SelectListItem>)Model.Students, "Select a Student") <br />
+    <label>Teacher: </label> 
+    @Html.DropDownList("TeacherId", (IEnumerable<SelectListItem>)Model.Teachers, "Select a Teacher") <br />
 
-  @Html.DropDownList("StudentId")
-  @Html.DropDownList("TeacherId")
+    <label>Challenges: </label>
+    <div>Select Challenges:</div>
+    <ul class="checkbox">
+      @foreach(Challenge challenge in Model.Challenges)
+      {
+        <li><input type="checkbox" id="@challenge.Description" value="@challenge.Description">@challenge.Description</li>
+      }
+    </ul>
+    <div>Select Accommodations:</div>
+    <ul class="checkbox">
+    @foreach(Accommodation accommodation in Model.Accommodations)
+    {
+      <li><input type="checkbox" id="@accommodation.Description" value="@accommodation.Description">@accommodation.Description</li>
+    }
+    </ul>
 
-  <input type="submit" value="Create" />
-  
+    <input type="submit" value="Create" />
 }

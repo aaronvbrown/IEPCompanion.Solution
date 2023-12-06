@@ -7,11 +7,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 
 namespace IEPCompanion.Controllers;
-
-public class PeoplesController : Controller
+public class PersonsController : Controller
 {
   private readonly IEPCompanionContext _db;
-  public PeoplesController(IEPCompanionContext db)
+  public PersonsController(IEPCompanionContext db)
   {
     _db = db;
   }

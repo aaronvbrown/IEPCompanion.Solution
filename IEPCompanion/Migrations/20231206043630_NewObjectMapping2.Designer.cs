@@ -3,6 +3,7 @@ using System;
 using IEPCompanion.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IEPCompanion.Migrations
 {
     [DbContext(typeof(IEPCompanionContext))]
-    partial class IEPCompanionContextModelSnapshot : ModelSnapshot
+    [Migration("20231206043630_NewObjectMapping2")]
+    partial class NewObjectMapping2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -276,7 +278,16 @@ namespace IEPCompanion.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Disability")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Goals")
+                        .HasColumnType("longtext");
+
                     b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SchoolYear")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -972,7 +983,7 @@ namespace IEPCompanion.Migrations
                         .IsRequired();
 
                     b.HasOne("IEPCompanion.Models.IEP", "Iep")
-                        .WithMany("AccommodationJoins")
+                        .WithMany("AccomodationJoins")
                         .HasForeignKey("IEPId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1082,7 +1093,7 @@ namespace IEPCompanion.Migrations
 
             modelBuilder.Entity("IEPCompanion.Models.IEP", b =>
                 {
-                    b.Navigation("AccommodationJoins");
+                    b.Navigation("AccomodationJoins");
 
                     b.Navigation("ChallengeJoins");
 
