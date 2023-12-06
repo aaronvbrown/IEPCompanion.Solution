@@ -8,52 +8,42 @@
       rel="stylesheet" 
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
       crossorigin="anonymous">
-    <link rel="stylesheet" href="~/css/site.css" type="text/css">
+    <link rel="stylesheet" href="~/css/styles.css" type="text/css">
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="navbar">
+
     <div class="container-sm-3">
       <a class="navbar-brand" href="/">IEPCompanion</a>
     </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      
+      <a class="container" href="/">Home</a>
         @if(!User.Identity.IsAuthenticated)
       {
-        <div class="container">
-          <li class="nav nav-item">
+        <a class="container">
             @Html.ActionLink("Register", "Register", "Accounts")
-          </li>
-        </div>
-        <div class="container">
-          <li class="nav nav-item">
+        </a>
+        <a class="container">
             @Html.ActionLink("Login", "Login", "Accounts")
-          </li>
-        </div>
+        </a>
       }
       @if(User.Identity.IsAuthenticated)
       {
-        <div class="container">
-        <li class="nav nav-item">
+        <a class="container">
           @using (Html.BeginForm("LogOff", "Accounts"))
           {
             <input type="submit" class="btn btn-primary" value="Log out" />
           }
-        </li>
-        </div>
-      }
-      <div class="container">
-        <li class="nav nav-item">
+        </a>
+      <a class="container">
           @Html.ActionLink("View All Peoples", "Index", "Peoples")
-        </li>
-      </div>
+      </a>
+    }
       
     </ul>
   </div>
 </nav>
+</br>
     @RenderBody()
   </body>
 </html>
