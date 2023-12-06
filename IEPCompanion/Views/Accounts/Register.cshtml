@@ -4,14 +4,14 @@
 @using IEPCompanion.ViewModels
 @model RegisterViewModel
 
-
+<div class="body-container">
 <div class="nav-header">Register</div>
-<div class="nav-content">
   <br />
   @if(!ViewData.ModelState.IsValid) 
   {
     @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:") 
   }
+
 
   @using (Html.BeginForm())
   {
@@ -20,22 +20,27 @@
         @Html.LabelFor(user => user.Email)
         @Html.TextBoxFor(user => user.Email)
       </li>
+      <br>
       <li>
         @Html.LabelFor(user => user.Password)
         @Html.EditorFor(user => user.Password)
       </li>
+      <br>
       <li>
         @Html.LabelFor(user => user.ConfirmPassword)
         @Html.EditorFor(user => user.ConfirmPassword)
       </li>
+      <br>
       <li>
         @Html.LabelFor(model => model.FirstName)
         @Html.EditorFor(model => model.FirstName)
       </li>
+      <br>
       <li>
         @Html.LabelFor(model => model.LastName)
         @Html.EditorFor(model => model.LastName)
       </li>
+      <br>
       <li>
         <label for="Role">Select your role:</label>
         <select id="Role" name="Role">

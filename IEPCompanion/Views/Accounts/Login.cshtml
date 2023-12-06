@@ -6,8 +6,9 @@
 
 @model LoginViewModel
 
-<h2>Log in with your account</h2>
-
+<div class="body-container">
+<div class="nav-header">Log in to your account</div>
+<div class="nav-content">
 @if(!ViewData.ModelState.IsValid) 
 {
   @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:") 
@@ -17,9 +18,9 @@
 {
   @Html.LabelFor(m => m.Email)
   @Html.TextBoxFor(m => m.Email)
-
+<br>
   @Html.LabelFor(m => m.Password)
   @Html.EditorFor(m => m.Password)
 
-  <input type="submit" value="Login" />
+  <input type="submit" value="Login" class="btn btn-primary" />
 }

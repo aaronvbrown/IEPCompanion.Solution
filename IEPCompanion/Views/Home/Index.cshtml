@@ -3,17 +3,21 @@
 }
 
 @using IEPCompanion.Models;
-
+@* <div class ="content"> *@
 <div class="body-container">
-@Html.ActionLink("Add IEP", "Create", "IEPs", null, new { @class = "btn btn-primary" });
-@Html.ActionLink("Add Student", "Create", "Student", null, new { @class = "btn btn-primary" });
-@Html.ActionLink("Click if you're a parent", "ParentAuthTest", "Home", null, new { @class = "btn btn-primary" });
-@Html.ActionLink("Click if you're a admin or a teacher", "AdminTeacherAuthTest", "Home", null, new { @class = "btn btn-primary" });
+@Html.ActionLink("Add IEP", "Create", "IEPs", null, new { @class = "btn btn-primary" })
+<br>
+@Html.ActionLink("Add Student", "Create", "Student", null, new { @class = "btn btn-primary" })
+<br>
+@Html.ActionLink("Click if you're a parent", "ParentAuthTest", "Home", null, new { @class = "btn btn-primary" })
+<br>
+@Html.ActionLink("Click if you're a admin or a teacher", "AdminTeacherAuthTest", "Home", null, new { @class = "btn btn-primary" })
 
   @if(!User.Identity.IsAuthenticated)
   {
+    <br>
     @Html.ActionLink("Login", "Login", "Accounts", null, new { @class = "btn btn-primary" })
-    <br />
+    <br>
     @Html.ActionLink("Register", "Register", "Accounts", null, new { @class = "btn btn-primary" })
   }
 else {

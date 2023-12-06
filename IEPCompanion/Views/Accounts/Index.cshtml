@@ -1,6 +1,9 @@
 @using Microsoft.AspNetCore.Identity;
 
-<h2>Account Management</h2>
+
+
+<div class="nav-header">Account Management</div>
+<div class="nav-content">
 @if (User.Identity.IsAuthenticated)
 {
   <p>Hello @User.Identity.Name!</p>
