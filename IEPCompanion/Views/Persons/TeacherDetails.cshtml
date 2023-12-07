@@ -1,0 +1,21 @@
+@using IEPCompanion.Models
+
+@{
+  Layout = "_Layout";
+}
+
+<div class="nav-header">Details</div>
+<br>
+<div class="body-container">
+    <h4>Person</h4>
+    <br>
+    <br>
+    @Html.ActionLink("View All Accommodations", "TeacherAccommodations", new {id = Model.PersonId}, new {@class = "btn btn-primary"})
+<ul>
+  @foreach(IEPPerson join in Model.PersonJoins)
+  {
+    <li>@join.IEP.IEPSummary</li>
+    <li>@Html.ActionLink("View Details", "Details", "IEPs", new { id = @join.IEP.IEPId })</li>
+  }
+  
+</ul>

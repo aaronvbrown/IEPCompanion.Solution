@@ -1,19 +1,38 @@
+@{
+  Layout = "_Layout";
+}
 @using IEPCompanion.Models
 
-<h1>IEP's</h1>
+<div class="nav-header">IEP</div>
+<div class="body-container">
 
-<div>
-@Html.ActionLink("Add IEP", "Create", "IEPs");
+  @Html.ActionLink("Add IEP", "Create", "IEPs")
 
-<h4>IEP Listing</h4>
-@if (Model["ieps"].Length == 0)
-{
-  <p>No ieps have been added yet!</p>
-} 
-<ul>
-@foreach (IEP iep in Model["ieps"])
-{
-  <li>@Html.ActionLink(@iep.IEPSummary, "Details", new {id = @iep.IEPId})</li>
-}
-</ul>
+  <h4>IEP Listing</h4>
+  @if (Model["ieps"].Length == 0)
+  {
+    <p>No IEPs have been added yet!</p>
+  }
+  else
+  {
+    <table>
+      <thead>
+        <tr>
+          <th>IEP Summary</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (IEP iep in Model["ieps"])
+        {
+          <tr>
+            <td>@iep.IEPSummary</td>
+            <td>@Html.ActionLink("View Details", "Details", new { id = @iep.IEPId })</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+
+</div>
 

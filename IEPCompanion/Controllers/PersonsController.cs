@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks.Dataflow;
 
 namespace IEPCompanion.Controllers;
 public class PersonsController : Controller
@@ -35,12 +36,39 @@ public class PersonsController : Controller
     return RedirectToAction("Index");
   }
 
+  public ActionResult TeacherIndex()
+  {
+    var teachers = _db.Persons.Where(p => p.Role == "Teacher").ToList();
+    return View(teachers);
+  }
 
-public ActionResult Details(int id)
+
+ public ActionResult TeacherAccommodations(int id)
 {
-    Person thisPerson = _db.Persons.FirstOrDefault(person => person.PersonId == id);
-
-    return View(thisPerson);
+  var model = _db.Persons
+                  .Where(p => p.Role == "Teacher" && p.PersonId == id)
+                  .Include(p => p.PersonJoins)
+                  .ThenInclude(join => join.IEP)
+                  .ThenInclude(iep => iep.AccommodationJoins)
+                  .ThenInclude(aj => aj.Accommodation)
+                  .SelectMany(p => p.PersonJoins)
+                  .Select(pj => new 
+                  {
+                      Teacher = pj.Person,
+                      Students = pj.IEP.PersonJoins.Where(pj => pj.Person.Role == "Student").Select(pj => pj.Person).ToList(),
+                      Accommodations = pj.IEP.AccommodationJoins.Select(aj => aj.Accommodation).ToList()
+                  }).ToList();
+  return View(model);
 }
+
+
+  public ActionResult TeacherDetails(int id)
+  {
+    Person thisPerson = _db.Persons
+    .Include(p=> p.PersonJoins)
+    .ThenInclude(join => join.IEP)
+    .FirstOrDefault(person => person.PersonId == id);
+    return View(thisPerson);
+  }
 
 }

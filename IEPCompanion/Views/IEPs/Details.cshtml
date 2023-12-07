@@ -5,18 +5,26 @@
 @using IEPCompanion.Models;
 @model IEPCompanion.Models.IEP;
 
-<h2>IEP Details</h2>
-<hr />
-
+<div class="nav-header">IEP Details</div>
+<br>
+<div class="body-container">
 
 <h4>Personnel</h4>
 <ul>
   @foreach(IEPPerson join in Model.PersonJoins)
   {
-    <li>@join.Person.Role: @join.Person.LastName, @join.Person.FirstName</li>
+    <li>
+      @join.Person.Role: @join.Person.LastName, @join.Person.FirstName
+    </li>
+    @if(join.Person.Role == "Teacher")
+    { 
+      <br />
+      @Html.ActionLink("View All IEPs for this teacher", "TeacherDetails", "Persons", new {id = @join.PersonId}, new {@class = "btn btn-primary"})
+    }
+    
   }
 </ul>
-
+<br>
 <h4>Challenges</h4>
 <ul>
   @foreach(IEPChallenge join in Model.ChallengeJoins)
@@ -24,7 +32,7 @@
     <li>@join.Challenge.Description</li>
   }
 </ul>
-
+<br>
 <h4>Accommodations</h4>
 <ul>
   @foreach(IEPAccommodation join in Model.AccommodationJoins)
@@ -32,7 +40,5 @@
     <li>@join.Accommodation.Description</li>
   }
 </ul>
-
-
 
 

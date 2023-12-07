@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+@using IEPCompanion.Models
+
+<div class="nav-header">IEP</div>
+<br>
+<div class="body-container">
+
+  @Html.ActionLink("Add IEP", "Create", "IEPs")
+
+  <h4>IEP Listing</h4>
+  <br>
+  <ul>
+  @foreach (Person person in Model)
+  {
+    <li>@Html.ActionLink($"@person.FirstName @person.LastName", "Details", new {id = @person.PersonId})</li>
+  }
+  </ul>

@@ -1,0 +1,34 @@
+@{
+  Layout = "_Layout";
+}
+@using IEPCompanion.Models
+
+<div class="nav-header">IEP</div>
+<div class="body-container">
+
+  <h4>Accommodations for Students in Teacher's Class</h4>
+
+  <ul>
+  @foreach (var item in Model)
+  {
+      <li>
+          <strong>Teacher:</strong> @item.Teacher.FirstName 
+          <ul>
+              @foreach (var student in item.Students)
+              {
+                  <li>
+                      <strong>Student:</strong> @student.FirstName
+                      <ul>
+                          @foreach (var accommodation in item.Accommodations)
+                          {
+                              <li>@accommodation.Description</li>
+                          }
+                      </ul>
+                  </li>
+              }
+          </ul>
+      </li>
+  }
+  </ul>
+
+</div>
