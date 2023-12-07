@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IEPCompanion.Migrations
 {
     [DbContext(typeof(IEPCompanionContext))]
-    [Migration("20231206030144_JoinEntitiesFinal")]
-    partial class JoinEntitiesFinal
+    [Migration("20231206214254_PersonMultiple500")]
+    partial class PersonMultiple500
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -278,17 +278,8 @@ namespace IEPCompanion.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Disability")
+                    b.Property<string>("IEPSummary")
                         .HasColumnType("longtext");
-
-                    b.Property<string>("Goals")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SchoolYear")
-                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("varchar(255)");
@@ -298,6 +289,13 @@ namespace IEPCompanion.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("IEPs");
+
+                    b.HasData(
+                        new
+                        {
+                            IEPId = 1,
+                            IEPSummary = "ScottGen_2011"
+                        });
                 });
 
             modelBuilder.Entity("IEPCompanion.Models.IEPAccommodation", b =>
@@ -306,7 +304,7 @@ namespace IEPCompanion.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("AccommodationId")
+                    b.Property<int>("AccommodationId")
                         .HasColumnType("int");
 
                     b.Property<int>("IEPId")
@@ -319,6 +317,67 @@ namespace IEPCompanion.Migrations
                     b.HasIndex("IEPId");
 
                     b.ToTable("IEPAccommodations");
+
+                    b.HasData(
+                        new
+                        {
+                            IEPAccommodationId = 1,
+                            AccommodationId = 1,
+                            IEPId = 1
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 2,
+                            AccommodationId = 3,
+                            IEPId = 1
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 3,
+                            AccommodationId = 5,
+                            IEPId = 1
+                        });
+                });
+
+            modelBuilder.Entity("IEPCompanion.Models.IEPChallenge", b =>
+                {
+                    b.Property<int>("IEPChallengeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ChallengeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IEPId")
+                        .HasColumnType("int");
+
+                    b.HasKey("IEPChallengeId");
+
+                    b.HasIndex("ChallengeId");
+
+                    b.HasIndex("IEPId");
+
+                    b.ToTable("IEPChallenges");
+
+                    b.HasData(
+                        new
+                        {
+                            IEPChallengeId = 1,
+                            ChallengeId = 2,
+                            IEPId = 1
+                        },
+                        new
+                        {
+                            IEPChallengeId = 2,
+                            ChallengeId = 4,
+                            IEPId = 1
+                        },
+                        new
+                        {
+                            IEPChallengeId = 3,
+                            ChallengeId = 5,
+                            IEPId = 1
+                        });
                 });
 
             modelBuilder.Entity("IEPCompanion.Models.IEPPerson", b =>
@@ -339,7 +398,21 @@ namespace IEPCompanion.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("IEPPerson");
+                    b.ToTable("IEPPersons");
+
+                    b.HasData(
+                        new
+                        {
+                            IEPPersonId = 1,
+                            IEPId = 1,
+                            PersonId = 1
+                        },
+                        new
+                        {
+                            IEPPersonId = 2,
+                            IEPId = 1,
+                            PersonId = 31
+                        });
                 });
 
             modelBuilder.Entity("IEPCompanion.Models.Person", b =>
@@ -609,6 +682,206 @@ namespace IEPCompanion.Migrations
                             FirstName = "Derek",
                             LastName = "Young",
                             Role = "Student"
+                        },
+                        new
+                        {
+                            PersonId = 31,
+                            Email = "Alan.Taylor@email.com",
+                            FirstName = "Alan",
+                            LastName = "Taylor",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 32,
+                            Email = "Beth.Morris@email.com",
+                            FirstName = "Beth",
+                            LastName = "Morris",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 33,
+                            Email = "Cara.Ellis@email.com",
+                            FirstName = "Cara",
+                            LastName = "Ellis",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 34,
+                            Email = "Derek.Grant@email.com",
+                            FirstName = "Derek",
+                            LastName = "Grant",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 35,
+                            Email = "Elaine.Peters@email.com",
+                            FirstName = "Elaine",
+                            LastName = "Peters",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 36,
+                            Email = "Frank.Olson@email.com",
+                            FirstName = "Frank",
+                            LastName = "Olson",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 37,
+                            Email = "Gina.Harper@email.com",
+                            FirstName = "Gina",
+                            LastName = "Harper",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 38,
+                            Email = "Hank.Bishop@email.com",
+                            FirstName = "Hank",
+                            LastName = "Bishop",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 39,
+                            Email = "Irene.Knight@email.com",
+                            FirstName = "Irene",
+                            LastName = "Knight",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 40,
+                            Email = "Jason.Sims@email.com",
+                            FirstName = "Jason",
+                            LastName = "Sims",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 41,
+                            Email = "Kelly.Day@email.com",
+                            FirstName = "Kelly",
+                            LastName = "Day",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 42,
+                            Email = "Leo.Reed@email.com",
+                            FirstName = "Leo",
+                            LastName = "Reed",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 43,
+                            Email = "Mona.Cook@email.com",
+                            FirstName = "Mona",
+                            LastName = "Cook",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 44,
+                            Email = "Nolan.Bailey@email.com",
+                            FirstName = "Nolan",
+                            LastName = "Bailey",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 45,
+                            Email = "Olga.Dunn@email.com",
+                            FirstName = "Olga",
+                            LastName = "Dunn",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 46,
+                            Email = "Paul.Brooks@email.com",
+                            FirstName = "Paul",
+                            LastName = "Brooks",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 47,
+                            Email = "Quincy.Rice@email.com",
+                            FirstName = "Quincy",
+                            LastName = "Rice",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 48,
+                            Email = "Rita.Payne@email.com",
+                            FirstName = "Rita",
+                            LastName = "Payne",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 49,
+                            Email = "Sam.Black@email.com",
+                            FirstName = "Sam",
+                            LastName = "Black",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 50,
+                            Email = "Tina.Woods@email.com",
+                            FirstName = "Tina",
+                            LastName = "Woods",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 51,
+                            Email = "Uma.Tucker@email.com",
+                            FirstName = "Uma",
+                            LastName = "Tucker",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 52,
+                            Email = "Victor.Porter@email.com",
+                            FirstName = "Victor",
+                            LastName = "Porter",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 53,
+                            Email = "Wendy.Sanders@email.com",
+                            FirstName = "Wendy",
+                            LastName = "Sanders",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 54,
+                            Email = "Xander.Price@email.com",
+                            FirstName = "Xander",
+                            LastName = "Price",
+                            Role = "Teacher"
+                        },
+                        new
+                        {
+                            PersonId = 55,
+                            Email = "Yolanda.Burns@email.com",
+                            FirstName = "Yolanda",
+                            LastName = "Burns",
+                            Role = "Teacher"
                         });
                 });
 
@@ -755,31 +1028,52 @@ namespace IEPCompanion.Migrations
 
             modelBuilder.Entity("IEPCompanion.Models.IEPAccommodation", b =>
                 {
-                    b.HasOne("IEPCompanion.Models.Accommodation", "accommodation")
-                        .WithMany()
-                        .HasForeignKey("AccommodationId");
+                    b.HasOne("IEPCompanion.Models.Accommodation", "Accommodation")
+                        .WithMany("AccommodationJoins")
+                        .HasForeignKey("AccommodationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("IEPCompanion.Models.IEP", "iep")
-                        .WithMany()
+                    b.HasOne("IEPCompanion.Models.IEP", "Iep")
+                        .WithMany("AccommodationJoins")
                         .HasForeignKey("IEPId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("accommodation");
+                    b.Navigation("Accommodation");
 
-                    b.Navigation("iep");
+                    b.Navigation("Iep");
+                });
+
+            modelBuilder.Entity("IEPCompanion.Models.IEPChallenge", b =>
+                {
+                    b.HasOne("IEPCompanion.Models.Challenge", "Challenge")
+                        .WithMany("ChallengeJoins")
+                        .HasForeignKey("ChallengeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("IEPCompanion.Models.IEP", "IEP")
+                        .WithMany("ChallengeJoins")
+                        .HasForeignKey("IEPId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Challenge");
+
+                    b.Navigation("IEP");
                 });
 
             modelBuilder.Entity("IEPCompanion.Models.IEPPerson", b =>
                 {
                     b.HasOne("IEPCompanion.Models.IEP", "IEP")
-                        .WithMany("JoinEntities")
+                        .WithMany("PersonJoins")
                         .HasForeignKey("IEPId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("IEPCompanion.Models.Person", "Person")
-                        .WithMany("JoinEntities")
+                        .WithMany("PersonJoins")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -849,14 +1143,28 @@ namespace IEPCompanion.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("IEPCompanion.Models.Accommodation", b =>
+                {
+                    b.Navigation("AccommodationJoins");
+                });
+
+            modelBuilder.Entity("IEPCompanion.Models.Challenge", b =>
+                {
+                    b.Navigation("ChallengeJoins");
+                });
+
             modelBuilder.Entity("IEPCompanion.Models.IEP", b =>
                 {
-                    b.Navigation("JoinEntities");
+                    b.Navigation("AccommodationJoins");
+
+                    b.Navigation("ChallengeJoins");
+
+                    b.Navigation("PersonJoins");
                 });
 
             modelBuilder.Entity("IEPCompanion.Models.Person", b =>
                 {
-                    b.Navigation("JoinEntities");
+                    b.Navigation("PersonJoins");
                 });
 #pragma warning restore 612, 618
         }

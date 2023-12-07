@@ -1,0 +1,30 @@
+    @using IEPCompanion.Models
+    @model IEPCompanion.Models.IEP
+
+    <h2>Add Peronnel and Student Summary</h2>
+
+    @using (Html.BeginForm())
+    {
+      @Html.HiddenFor(model => model.IEPId)
+
+      <label>Student: </label>
+      @Html.DropDownList("StudentId", (IEnumerable<SelectListItem>)ViewBag.Students, "Select a Student") <br />
+      <label>Teacher: </label>
+      @Html.DropDownList("TeacherId", (IEnumerable<SelectListItem>)ViewBag.Teachers, "Select a Teacher") <br />
+      <ul class="checkbox">
+      <div>Select Challenges:</div>
+        @foreach (Challenge challenge in ViewBag.Challenges)
+        {
+          <li><input type="checkbox" id="@challenge.Description" value="@challenge.Description">@challenge.Description</li>
+        }
+      </ul>
+      <div>Select Accommodations:</div>
+      <ul class="checkbox">
+        @foreach (Accommodation accommodation in ViewBag.Accommodations)
+        {
+          <li><input type="checkbox" id="@accommodation.Description" value="@accommodation.Description">@accommodation.Description</li>
+        }
+      </ul>
+
+      <input value="Create" type="submit" />
+    }

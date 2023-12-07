@@ -276,8 +276,8 @@ namespace IEPCompanion.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
+                    b.Property<string>("IEPSummary")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .HasColumnType("varchar(255)");
@@ -287,6 +287,108 @@ namespace IEPCompanion.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("IEPs");
+
+                    b.HasData(
+                        new
+                        {
+                            IEPId = 1,
+                            IEPSummary = "JohnsonAlice_2022"
+                        },
+                        new
+                        {
+                            IEPId = 2,
+                            IEPSummary = "SmithBob_2022"
+                        },
+                        new
+                        {
+                            IEPId = 3,
+                            IEPSummary = "WilliamsCarol_2022"
+                        },
+                        new
+                        {
+                            IEPId = 4,
+                            IEPSummary = "BrownDavid_2022"
+                        },
+                        new
+                        {
+                            IEPId = 5,
+                            IEPSummary = "JonesEve_2022"
+                        },
+                        new
+                        {
+                            IEPId = 6,
+                            IEPSummary = "MillerFrank_2022"
+                        },
+                        new
+                        {
+                            IEPId = 7,
+                            IEPSummary = "DavisGrace_2022"
+                        },
+                        new
+                        {
+                            IEPId = 8,
+                            IEPSummary = "GarciaHenry_2022"
+                        },
+                        new
+                        {
+                            IEPId = 9,
+                            IEPSummary = "RodriguezIvy_2022"
+                        },
+                        new
+                        {
+                            IEPId = 10,
+                            IEPSummary = "WilsonJack_2022"
+                        },
+                        new
+                        {
+                            IEPId = 11,
+                            IEPSummary = "MartinezKaren_2022"
+                        },
+                        new
+                        {
+                            IEPId = 12,
+                            IEPSummary = "AndersonLeo_2022"
+                        },
+                        new
+                        {
+                            IEPId = 13,
+                            IEPSummary = "TaylorMia_2022"
+                        },
+                        new
+                        {
+                            IEPId = 14,
+                            IEPSummary = "ThomasNick_2022"
+                        },
+                        new
+                        {
+                            IEPId = 15,
+                            IEPSummary = "HernandezOlivia_2022"
+                        },
+                        new
+                        {
+                            IEPId = 16,
+                            IEPSummary = "MoorePaul_2022"
+                        },
+                        new
+                        {
+                            IEPId = 17,
+                            IEPSummary = "JacksonQuinn_2022"
+                        },
+                        new
+                        {
+                            IEPId = 18,
+                            IEPSummary = "MartinRachel_2022"
+                        },
+                        new
+                        {
+                            IEPId = 19,
+                            IEPSummary = "LeeSteve_2022"
+                        },
+                        new
+                        {
+                            IEPId = 20,
+                            IEPSummary = "PerezTina_2022"
+                        });
                 });
 
             modelBuilder.Entity("IEPCompanion.Models.IEPAccommodation", b =>
@@ -308,6 +410,224 @@ namespace IEPCompanion.Migrations
                     b.HasIndex("IEPId");
 
                     b.ToTable("IEPAccommodations");
+
+                    b.HasData(
+                        new
+                        {
+                            IEPAccommodationId = 1,
+                            AccommodationId = 1,
+                            IEPId = 1
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 2,
+                            AccommodationId = 2,
+                            IEPId = 1
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 3,
+                            AccommodationId = 3,
+                            IEPId = 1
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 4,
+                            AccommodationId = 1,
+                            IEPId = 2
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 5,
+                            AccommodationId = 2,
+                            IEPId = 2
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 6,
+                            AccommodationId = 3,
+                            IEPId = 2
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 7,
+                            AccommodationId = 1,
+                            IEPId = 3
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 8,
+                            AccommodationId = 2,
+                            IEPId = 3
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 9,
+                            AccommodationId = 3,
+                            IEPId = 3
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 10,
+                            AccommodationId = 1,
+                            IEPId = 4
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 11,
+                            AccommodationId = 2,
+                            IEPId = 4
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 12,
+                            AccommodationId = 3,
+                            IEPId = 4
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 13,
+                            AccommodationId = 1,
+                            IEPId = 5
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 14,
+                            AccommodationId = 2,
+                            IEPId = 5
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 15,
+                            AccommodationId = 3,
+                            IEPId = 5
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 16,
+                            AccommodationId = 1,
+                            IEPId = 6
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 17,
+                            AccommodationId = 2,
+                            IEPId = 6
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 18,
+                            AccommodationId = 3,
+                            IEPId = 6
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 19,
+                            AccommodationId = 1,
+                            IEPId = 7
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 20,
+                            AccommodationId = 2,
+                            IEPId = 7
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 21,
+                            AccommodationId = 3,
+                            IEPId = 7
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 22,
+                            AccommodationId = 1,
+                            IEPId = 8
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 23,
+                            AccommodationId = 2,
+                            IEPId = 8
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 24,
+                            AccommodationId = 3,
+                            IEPId = 8
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 25,
+                            AccommodationId = 1,
+                            IEPId = 9
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 26,
+                            AccommodationId = 2,
+                            IEPId = 9
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 27,
+                            AccommodationId = 3,
+                            IEPId = 9
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 28,
+                            AccommodationId = 1,
+                            IEPId = 10
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 29,
+                            AccommodationId = 2,
+                            IEPId = 10
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 30,
+                            AccommodationId = 3,
+                            IEPId = 10
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 31,
+                            AccommodationId = 1,
+                            IEPId = 11
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 32,
+                            AccommodationId = 2,
+                            IEPId = 11
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 33,
+                            AccommodationId = 3,
+                            IEPId = 11
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 34,
+                            AccommodationId = 1,
+                            IEPId = 12
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 35,
+                            AccommodationId = 2,
+                            IEPId = 12
+                        },
+                        new
+                        {
+                            IEPAccommodationId = 36,
+                            AccommodationId = 3,
+                            IEPId = 12
+                        });
                 });
 
             modelBuilder.Entity("IEPCompanion.Models.IEPChallenge", b =>
@@ -329,6 +649,224 @@ namespace IEPCompanion.Migrations
                     b.HasIndex("IEPId");
 
                     b.ToTable("IEPChallenges");
+
+                    b.HasData(
+                        new
+                        {
+                            IEPChallengeId = 1,
+                            ChallengeId = 1,
+                            IEPId = 1
+                        },
+                        new
+                        {
+                            IEPChallengeId = 2,
+                            ChallengeId = 2,
+                            IEPId = 1
+                        },
+                        new
+                        {
+                            IEPChallengeId = 3,
+                            ChallengeId = 3,
+                            IEPId = 1
+                        },
+                        new
+                        {
+                            IEPChallengeId = 4,
+                            ChallengeId = 4,
+                            IEPId = 2
+                        },
+                        new
+                        {
+                            IEPChallengeId = 5,
+                            ChallengeId = 5,
+                            IEPId = 2
+                        },
+                        new
+                        {
+                            IEPChallengeId = 6,
+                            ChallengeId = 6,
+                            IEPId = 2
+                        },
+                        new
+                        {
+                            IEPChallengeId = 7,
+                            ChallengeId = 4,
+                            IEPId = 3
+                        },
+                        new
+                        {
+                            IEPChallengeId = 8,
+                            ChallengeId = 8,
+                            IEPId = 3
+                        },
+                        new
+                        {
+                            IEPChallengeId = 9,
+                            ChallengeId = 9,
+                            IEPId = 3
+                        },
+                        new
+                        {
+                            IEPChallengeId = 10,
+                            ChallengeId = 1,
+                            IEPId = 4
+                        },
+                        new
+                        {
+                            IEPChallengeId = 11,
+                            ChallengeId = 4,
+                            IEPId = 4
+                        },
+                        new
+                        {
+                            IEPChallengeId = 12,
+                            ChallengeId = 14,
+                            IEPId = 4
+                        },
+                        new
+                        {
+                            IEPChallengeId = 13,
+                            ChallengeId = 12,
+                            IEPId = 5
+                        },
+                        new
+                        {
+                            IEPChallengeId = 15,
+                            ChallengeId = 10,
+                            IEPId = 5
+                        },
+                        new
+                        {
+                            IEPChallengeId = 16,
+                            ChallengeId = 8,
+                            IEPId = 5
+                        },
+                        new
+                        {
+                            IEPChallengeId = 17,
+                            ChallengeId = 1,
+                            IEPId = 6
+                        },
+                        new
+                        {
+                            IEPChallengeId = 18,
+                            ChallengeId = 3,
+                            IEPId = 6
+                        },
+                        new
+                        {
+                            IEPChallengeId = 19,
+                            ChallengeId = 6,
+                            IEPId = 6
+                        },
+                        new
+                        {
+                            IEPChallengeId = 20,
+                            ChallengeId = 7,
+                            IEPId = 7
+                        },
+                        new
+                        {
+                            IEPChallengeId = 21,
+                            ChallengeId = 8,
+                            IEPId = 7
+                        },
+                        new
+                        {
+                            IEPChallengeId = 22,
+                            ChallengeId = 9,
+                            IEPId = 7
+                        },
+                        new
+                        {
+                            IEPChallengeId = 23,
+                            ChallengeId = 7,
+                            IEPId = 8
+                        },
+                        new
+                        {
+                            IEPChallengeId = 24,
+                            ChallengeId = 6,
+                            IEPId = 8
+                        },
+                        new
+                        {
+                            IEPChallengeId = 25,
+                            ChallengeId = 9,
+                            IEPId = 8
+                        },
+                        new
+                        {
+                            IEPChallengeId = 26,
+                            ChallengeId = 7,
+                            IEPId = 9
+                        },
+                        new
+                        {
+                            IEPChallengeId = 27,
+                            ChallengeId = 4,
+                            IEPId = 9
+                        },
+                        new
+                        {
+                            IEPChallengeId = 28,
+                            ChallengeId = 9,
+                            IEPId = 9
+                        },
+                        new
+                        {
+                            IEPChallengeId = 29,
+                            ChallengeId = 7,
+                            IEPId = 10
+                        },
+                        new
+                        {
+                            IEPChallengeId = 30,
+                            ChallengeId = 11,
+                            IEPId = 10
+                        },
+                        new
+                        {
+                            IEPChallengeId = 31,
+                            ChallengeId = 9,
+                            IEPId = 10
+                        },
+                        new
+                        {
+                            IEPChallengeId = 32,
+                            ChallengeId = 7,
+                            IEPId = 11
+                        },
+                        new
+                        {
+                            IEPChallengeId = 33,
+                            ChallengeId = 12,
+                            IEPId = 11
+                        },
+                        new
+                        {
+                            IEPChallengeId = 34,
+                            ChallengeId = 9,
+                            IEPId = 11
+                        },
+                        new
+                        {
+                            IEPChallengeId = 35,
+                            ChallengeId = 7,
+                            IEPId = 12
+                        },
+                        new
+                        {
+                            IEPChallengeId = 36,
+                            ChallengeId = 14,
+                            IEPId = 12
+                        },
+                        new
+                        {
+                            IEPChallengeId = 37,
+                            ChallengeId = 9,
+                            IEPId = 12
+                        });
                 });
 
             modelBuilder.Entity("IEPCompanion.Models.IEPPerson", b =>
@@ -350,6 +888,152 @@ namespace IEPCompanion.Migrations
                     b.HasIndex("PersonId");
 
                     b.ToTable("IEPPersons");
+
+                    b.HasData(
+                        new
+                        {
+                            IEPPersonId = 1,
+                            IEPId = 1,
+                            PersonId = 1
+                        },
+                        new
+                        {
+                            IEPPersonId = 2,
+                            IEPId = 1,
+                            PersonId = 31
+                        },
+                        new
+                        {
+                            IEPPersonId = 3,
+                            IEPId = 2,
+                            PersonId = 2
+                        },
+                        new
+                        {
+                            IEPPersonId = 4,
+                            IEPId = 2,
+                            PersonId = 32
+                        },
+                        new
+                        {
+                            IEPPersonId = 5,
+                            IEPId = 3,
+                            PersonId = 3
+                        },
+                        new
+                        {
+                            IEPPersonId = 6,
+                            IEPId = 3,
+                            PersonId = 33
+                        },
+                        new
+                        {
+                            IEPPersonId = 7,
+                            IEPId = 4,
+                            PersonId = 4
+                        },
+                        new
+                        {
+                            IEPPersonId = 8,
+                            IEPId = 4,
+                            PersonId = 34
+                        },
+                        new
+                        {
+                            IEPPersonId = 9,
+                            IEPId = 5,
+                            PersonId = 5
+                        },
+                        new
+                        {
+                            IEPPersonId = 10,
+                            IEPId = 5,
+                            PersonId = 35
+                        },
+                        new
+                        {
+                            IEPPersonId = 11,
+                            IEPId = 6,
+                            PersonId = 6
+                        },
+                        new
+                        {
+                            IEPPersonId = 12,
+                            IEPId = 6,
+                            PersonId = 36
+                        },
+                        new
+                        {
+                            IEPPersonId = 13,
+                            IEPId = 7,
+                            PersonId = 7
+                        },
+                        new
+                        {
+                            IEPPersonId = 14,
+                            IEPId = 7,
+                            PersonId = 37
+                        },
+                        new
+                        {
+                            IEPPersonId = 15,
+                            IEPId = 8,
+                            PersonId = 8
+                        },
+                        new
+                        {
+                            IEPPersonId = 16,
+                            IEPId = 8,
+                            PersonId = 38
+                        },
+                        new
+                        {
+                            IEPPersonId = 17,
+                            IEPId = 9,
+                            PersonId = 9
+                        },
+                        new
+                        {
+                            IEPPersonId = 18,
+                            IEPId = 9,
+                            PersonId = 39
+                        },
+                        new
+                        {
+                            IEPPersonId = 19,
+                            IEPId = 10,
+                            PersonId = 10
+                        },
+                        new
+                        {
+                            IEPPersonId = 20,
+                            IEPId = 10,
+                            PersonId = 40
+                        },
+                        new
+                        {
+                            IEPPersonId = 21,
+                            IEPId = 11,
+                            PersonId = 11
+                        },
+                        new
+                        {
+                            IEPPersonId = 22,
+                            IEPId = 11,
+                            PersonId = 41
+                        },
+                        new
+                        {
+                            IEPPersonId = 23,
+                            IEPId = 12,
+                            PersonId = 12
+                        },
+                        new
+                        {
+                            IEPPersonId = 24,
+                            IEPId = 12,
+                            PersonId = 42
+                        });
                 });
 
             modelBuilder.Entity("IEPCompanion.Models.Person", b =>
@@ -966,7 +1650,7 @@ namespace IEPCompanion.Migrations
             modelBuilder.Entity("IEPCompanion.Models.IEPAccommodation", b =>
                 {
                     b.HasOne("IEPCompanion.Models.Accommodation", "Accommodation")
-                        .WithMany()
+                        .WithMany("AccommodationJoins")
                         .HasForeignKey("AccommodationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -985,7 +1669,7 @@ namespace IEPCompanion.Migrations
             modelBuilder.Entity("IEPCompanion.Models.IEPChallenge", b =>
                 {
                     b.HasOne("IEPCompanion.Models.Challenge", "Challenge")
-                        .WithMany()
+                        .WithMany("ChallengeJoins")
                         .HasForeignKey("ChallengeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1010,7 +1694,7 @@ namespace IEPCompanion.Migrations
                         .IsRequired();
 
                     b.HasOne("IEPCompanion.Models.Person", "Person")
-                        .WithMany("JoinEntities")
+                        .WithMany("PersonJoins")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1080,6 +1764,16 @@ namespace IEPCompanion.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("IEPCompanion.Models.Accommodation", b =>
+                {
+                    b.Navigation("AccommodationJoins");
+                });
+
+            modelBuilder.Entity("IEPCompanion.Models.Challenge", b =>
+                {
+                    b.Navigation("ChallengeJoins");
+                });
+
             modelBuilder.Entity("IEPCompanion.Models.IEP", b =>
                 {
                     b.Navigation("AccommodationJoins");
@@ -1091,7 +1785,7 @@ namespace IEPCompanion.Migrations
 
             modelBuilder.Entity("IEPCompanion.Models.Person", b =>
                 {
-                    b.Navigation("JoinEntities");
+                    b.Navigation("PersonJoins");
                 });
 #pragma warning restore 612, 618
         }
